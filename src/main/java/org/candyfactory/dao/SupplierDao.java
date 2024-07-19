@@ -13,28 +13,26 @@ public class SupplierDao  {
     private static final String USERNAME = "postgres";
     private static final String PASSWORD = "ytpkbvtyz";
 
-    private static Connection connection;
+    private static final Connection connection;
 
     static {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-
         try {
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            connection = DriverManager.getConnection(URL,USERNAME,PASSWORD);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
     public List<Supplier> index() {
         List<Supplier> suppliers = new ArrayList<>();
-
         try {
             Statement statement = connection.createStatement();
-            String SQL = "SELECT * FROM Supplier";
+            String SQL = "SELECT * FROM \"Supplier\"";
             ResultSet resultSet = statement.executeQuery(SQL);
 
             while (resultSet.next()) {
@@ -46,36 +44,28 @@ public class SupplierDao  {
 
                 suppliers.add(supplier);
             }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-
         return suppliers;
     }
 
     public Supplier show(int id) {
         Supplier supplier = null;
-
         try {
-            PreparedStatement preparedStatement =
-                    connection.prepareStatement("SELECT * FROM Person WHERE id=?");
-
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM \"Supplier\" WHERE id=?");
             preparedStatement.setInt(1, id);
-
             ResultSet resultSet = preparedStatement.executeQuery();
-
             resultSet.next();
-
             supplier = new Supplier();
-
             supplier.setId(resultSet.getInt("id"));
             supplier.setName(resultSet.getString("name"));
             supplier.setAddress(resultSet.getString("address"));
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return supplier;
     }
 }

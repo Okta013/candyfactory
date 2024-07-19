@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/suppliers")
+@RequestMapping("/supplier")
 public class SupplierController {
     private final SupplierDao supplierDao;
 
