@@ -10,7 +10,11 @@
 <p th:text="'Supplier\'s name: ' + ${supplier.getName()}"></p>
 <p th:text="'Supplier\'s address: ' + ${supplier.getAddress()}"></p>
 
+<a th:href="@{/supplier/{id}/edit(id=${supplier.getId()})}">Edit</a>
 
+<form th:method="DELETE" th:action="@{/supplier/{id}(id=${supplier.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
 
 
 </body>
