@@ -1,12 +1,13 @@
 package org.candyfactory.controller;
 
+import jakarta.validation.Valid;
 import org.candyfactory.dao.SupplierDao;
+import org.candyfactory.model.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/supplier")
@@ -29,4 +30,41 @@ public class SupplierController {
         return "supplier/show";
     }
 
+    @GetMapping("/new")
+    public String newSupplier(@ModelAttribute("supplier") Supplier supplier) {
+        return "supplier/new";
+    }
+
+    @PostMapping()
+    public String create(@ModelAttribute("supplier") @Valid Supplier supplier,
+                         BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "supplier/new";
+        }
+        supplierDao.save(supplier);
+        return "redirect:/supplier";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable("id") int id, Model model) {
+        model.addAttribute("supplier", supplierDao.show(id));
+        return "supplier/edit";
+    }
+
+    @PatchMapping("{id}")
+    public String update(@PathVariable("id") int id,
+                         @ModelAttribute("supplier") @Valid Supplier supplier,
+                         BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "supplier/edit";
+        }
+        supplierDao.update(id, supplier);
+        return "redirect:/supplier";
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id) {
+        supplierDao.delete(id);
+        return "redirect:/supplier";
+    }
 }

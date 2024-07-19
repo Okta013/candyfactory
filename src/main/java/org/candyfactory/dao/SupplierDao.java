@@ -68,4 +68,47 @@ public class SupplierDao  {
         }
         return supplier;
     }
+
+    public void save(Supplier supplier) {
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("INSERT INTO \"Supplier\" VALUES(2, ?, ?)");
+            preparedStatement.setString(1, supplier.getName());
+            preparedStatement.setString(2, supplier.getAddress());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void update(int id, Supplier updatedSupplier) {
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement(
+                            "UPDATE \"Supplier\" SET name=?, address=? WHERE id=?");
+
+            preparedStatement.setString(1, updatedSupplier.getName());
+            preparedStatement.setString(2, updatedSupplier.getAddress());
+            preparedStatement.setInt(3, updatedSupplier.getId());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void delete(int id) {
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement =
+                    connection.prepareStatement("DELETE FROM \"Supplier\" WHERE id=?");
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
