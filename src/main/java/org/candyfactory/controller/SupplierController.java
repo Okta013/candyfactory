@@ -1,6 +1,7 @@
 package org.candyfactory.controller;
 
 import org.candyfactory.dao.SupplierDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +20,13 @@ public class SupplierController {
     @GetMapping
     public String index(Model model) {
         model.addAttribute("suppliers", supplierDao.index());
-        return "suppliers/index";
+        return "supplier/index";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("supplier", supplierDao.show(id));
-        return "suppliers/show";
+        return "supplier/show";
     }
 
 }
