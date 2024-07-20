@@ -8,5 +8,9 @@
 <div th:each="supplier : ${suppliers}">
     <a th:href="@{/supplier/{id}(id=${supplier.getId()})}" th:text="${supplier.getName()}"></a>
 </div>
+
+<br/>
+<hr/>
+<a href="supplier/new">Create new supplier</a>
 </body>
 </html>
