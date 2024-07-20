@@ -72,7 +72,7 @@ public class SupplierDao  {
     public void save(Supplier supplier) {
         try {
             PreparedStatement preparedStatement =
-                    connection.prepareStatement("INSERT INTO \"Supplier\" VALUES(2, ?, ?)");
+                    connection.prepareStatement("INSERT INTO \"Supplier\" (name, address) VALUES(?, ?)");
             preparedStatement.setString(1, supplier.getName());
             preparedStatement.setString(2, supplier.getAddress());
 
