@@ -23,7 +23,7 @@ public class OwnerController {
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable int id, Model model) {
+    public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("owner", ownerDao.show(id));
         return "owner/show";
     }
