@@ -26,4 +26,18 @@ public class OwnerDao {
                 new BeanPropertyRowMapper<>(Owner.class)).stream().findAny().orElse(null);
     }
 
+    public void save(Owner owner){
+        jdbcTemplate.update("INSERT INTO \"Owner\" (name, surname, phone, email) VALUES (?, ?, ?, ?)",
+                owner.getName(), owner.getSurname(), owner.getPhone(), owner.getEmail());
+    }
+
+    public void update(int id, Owner updatedOwner){
+        jdbcTemplate.update("UPDATE \"Owner\" SET name=?, surname=?, phone=?, email=? WHERE id=?",
+                updatedOwner.getName(), updatedOwner.getSurname(), updatedOwner.getPhone(), updatedOwner.getEmail(), id);
+    }
+
+    public void delete(int id){
+        jdbcTemplate.update("DELETE FROM \"Owner\" WHERE id=?", id);
+    }
+
 }
