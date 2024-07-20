@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Supplier</title>
@@ -10,8 +10,12 @@
 <p th:text="'Supplier\'s name: ' + ${supplier.getName()}"></p>
 <p th:text="'Supplier\'s address: ' + ${supplier.getAddress()}"></p>
 
+<br/>
+<hr/>
 <a th:href="@{/supplier/{id}/edit(id=${supplier.getId()})}">Edit</a>
 
+<br/>
+<hr/>
 <form th:method="DELETE" th:action="@{/supplier/{id}(id=${supplier.getId()})}">
     <input type="submit" value="Delete"/>
 </form>

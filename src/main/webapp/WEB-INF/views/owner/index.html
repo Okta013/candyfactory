@@ -5,9 +5,12 @@
     <title>All Owners</title>
 </head>
 <body>
+<div th:each="owner : ${owners}">
+    <a th:href="@{/owner/{id}(id=${owner.getId()})}" th:text="${owner.getName()}"></a>
+</div>
 
-
-
+<br/>
+<hr/>
 
 </body>
 </html>
