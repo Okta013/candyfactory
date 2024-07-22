@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="candy_factory@localhost" uuid="df4a436b-8042-4bb0-b925-06373b5cfbf7">
+    <data-source source="LOCAL" name="candy_factory@localhost [2]" uuid="b56eb153-6cc5-4de3-b926-b8ea271c6f6d">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
@@ -9,12 +9,11 @@
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.host.port" />
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
-        <property name="com.intellij.clouds.kubernetes.db.resource.type" value="Deployment" />
         <property name="com.intellij.clouds.kubernetes.db.container.port" />
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="candy_factory@localhost [2]" uuid="b56eb153-6cc5-4de3-b926-b8ea271c6f6d">
+    <data-source source="LOCAL" name="candy_factory@localhost" uuid="5d5cea49-37e8-4aee-842f-df9a6b42ca77">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
