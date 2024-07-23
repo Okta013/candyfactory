@@ -1,5 +1,6 @@
 package org.candyfactory.dao;
 
+import org.candyfactory.model.Owner;
 import org.candyfactory.model.Supplier;
 import org.springframework.stereotype.Component;
 
