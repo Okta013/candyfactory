@@ -6,12 +6,13 @@
 </head>
 <body>
 
-<p th:text="'Owner\'s ID:' + ${producttype.getId()}"></p>
-<p th:text="'Owner\'s name: ' + ${producttype.getName()}"></p>
+<p th:text="'Product type\'s ID:' + ${producttype.getId()}"></p>
+<p th:text="'Product type\'s name: ' + ${producttype.getName()}"></p>
+<p th:text="'Product type\'s description:' + ${producttype.getDescription()}"></p>
 
 <br/>
 <hr/>
-<a th:href="@{/owner/{id}/edit(id=${producttype.getId()})}">Edit</a>
+<a th:href="@{/producttype/{id}/edit(id=${producttype.getId()})}">Edit</a>
 <br/>
 <hr/>
 <form th:method="DELETE" th:action="@{/producttype/{id}(id=${producttype.getId()})}">

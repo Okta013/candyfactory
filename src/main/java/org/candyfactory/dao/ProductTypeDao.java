@@ -44,11 +44,11 @@ public class ProductTypeDao {
     }
 
     @Transactional
-    public void update(int id, ProductType updatedPerson) {
+    public void update(int id, ProductType updatedProductType) {
         Session session = sessionFactory.getCurrentSession();
-        ProductType personToBeUpdated = session.get(ProductType.class, id);
+        ProductType productTypeToBeUpdated = session.get(ProductType.class, id);
 
-        personToBeUpdated.setName(updatedPerson.getName());
+        productTypeToBeUpdated.setName(updatedProductType.getName());
     }
 
     @Transactional
