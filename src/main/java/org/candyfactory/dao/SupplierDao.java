@@ -32,7 +32,7 @@ public class SupplierDao  {
         List<Supplier> suppliers = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            String SQL = "SELECT * FROM \"Supplier\"";
+            String SQL = "SELECT * FROM \"supplier\"";
             ResultSet resultSet = statement.executeQuery(SQL);
 
             while (resultSet.next()) {
@@ -54,7 +54,7 @@ public class SupplierDao  {
         Supplier supplier = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT * FROM \"Supplier\" WHERE id=?");
+                    "SELECT * FROM \"supplier\" WHERE id=?");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
@@ -73,7 +73,7 @@ public class SupplierDao  {
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement(
-                            "INSERT INTO \"Supplier\" (name, address) VALUES(?, ?)");
+                            "INSERT INTO \"supplier\" (name, address) VALUES(?, ?)");
             preparedStatement.setString(1, supplier.getName());
             preparedStatement.setString(2, supplier.getAddress());
 
@@ -88,7 +88,7 @@ public class SupplierDao  {
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement(
-                            "UPDATE \"Supplier\" SET name=?, address=? WHERE id=?");
+                            "UPDATE \"supplier\" SET name=?, address=? WHERE id=?");
 
             preparedStatement.setString(1, updatedSupplier.getName());
             preparedStatement.setString(2, updatedSupplier.getAddress());
@@ -104,7 +104,7 @@ public class SupplierDao  {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement =
-                    connection.prepareStatement("DELETE FROM \"Supplier\" WHERE id=?");
+                    connection.prepareStatement("DELETE FROM \"supplier\" WHERE id=?");
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
 
