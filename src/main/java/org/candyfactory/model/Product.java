@@ -20,11 +20,11 @@ public class Product {
     private double price;
     @Column(name = "calories")
     private int calories;
-    @Column(name = "supplier")
+    @Column(name = "supplier_id")
     private int supplier;
     @Column(name = "composition")
     private String composition;
-    @Column(name="type")
+    @Column(name= "type_id")
     private int type;
 
     public Product() {}
