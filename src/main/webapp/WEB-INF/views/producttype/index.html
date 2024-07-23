@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>All Owners</title>
 </head>
 <body>
+<div th:each="owner : ${producttype}">
+    <a th:href="@{/owner/{id}(id=${owner.getId()})}" th:text="${owner.getName()}"></a>
+</div>
 
+<br/>
+<hr/>
+<a href="/producttype/new">Create new owner</a>
 </body>
 </html>
