@@ -2,6 +2,9 @@ package org.candyfactory.dao;
 
 import org.candyfactory.model.Owner;
 import org.candyfactory.model.Supplier;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
@@ -42,7 +45,6 @@ public class SupplierDao  {
                 supplier.setId(resultSet.getInt("id"));
                 supplier.setName(resultSet.getString("name"));
                 supplier.setAddress(resultSet.getString("address"));
-
                 suppliers.add(supplier);
             }
         } catch (SQLException e) {
@@ -55,7 +57,7 @@ public class SupplierDao  {
         Supplier supplier = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT * FROM \"supplier\" WHERE id=?");
+                    "SELECT * FROM supplier WHERE id=?");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();

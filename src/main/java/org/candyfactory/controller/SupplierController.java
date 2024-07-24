@@ -2,6 +2,7 @@ package org.candyfactory.controller;
 
 import jakarta.validation.Valid;
 import org.candyfactory.dao.SupplierDao;
+import org.candyfactory.model.Owner;
 import org.candyfactory.model.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,4 +68,5 @@ public class SupplierController {
         supplierDao.delete(id);
         return "redirect:/supplier";
     }
+
 }

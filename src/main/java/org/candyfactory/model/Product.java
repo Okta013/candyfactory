@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -26,6 +28,12 @@ public class Product {
     private String composition;
     @Column(name= "type_id")
     private int type;
+
+    @ManyToMany
+    @JoinTable(name="product_type_product",
+            joinColumns=@JoinColumn(name="product_id"),
+            inverseJoinColumns=@JoinColumn(name="product_type_id"))
+    private List<ProductType> productTypes;
 
     public Product() {}
 
